@@ -22,17 +22,21 @@
     3.2 output is sended by reference and this is the result
   4. return output array
   
+  Performance
+  The Big O notation for this is O(n) where n is the possible length of 
+  an output array. And, because is a constant, this is O(n)
+
 """
 
 
-def get_flat_array(array) -> list:
+def get_flat_array(array):
     output = []
     for item in array:
         find_number_in_array(output, item)
     return output
 
 
-def find_number_in_array(output, item) -> None:
+def find_number_in_array(output, item):
     is_array = item_is_array(item)
     if is_array:
         for items in item:
@@ -41,10 +45,9 @@ def find_number_in_array(output, item) -> None:
         output.append(item)
 
 
-def item_is_array(item) -> bool:
-    return isinstance(item, list)
-
-
-if __name__ == "__main__":
-    print(get_flat_array([1, [2, [3, [4, 5]]]]))
-    print(get_flat_array([1, 2, 3, [1, [2, 3], 4, [2, 3, 4]]]))
+def item_is_array(item):
+    is_array = isinstance(item, list)
+    is_int = isinstance(item, int)
+    if not is_array and not is_int:
+        raise TypeError("Item is not an array or an integer")
+    return is_array
