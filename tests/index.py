@@ -1,5 +1,5 @@
 import unittest
-from src.index import get_flat_array, item_is_array
+from src.index import get_flat_array, item_is_array, validate_type_element
 from constants import BIG_INPUT, BIG_OUTPUT
 
 
@@ -14,7 +14,15 @@ class TestIndex(unittest.TestCase):
 
     def test_item_is_array_text(self):
         item = "1"
-        self.assertRaises(TypeError, item_is_array, item)
+        self.assertEqual(item_is_array(item), False)
+
+    def test_validate_type_element_text(self):
+        item = "1"
+        self.assertRaises(TypeError, validate_type_element, item)
+
+    def test_validate_type_element_float(self):
+        item = 1.2
+        self.assertRaises(TypeError, validate_type_element, item)
 
     def test_case_1(self):
         inputs = [1, [2, [3, [[4, 5], 1, 6], 2], 6]]

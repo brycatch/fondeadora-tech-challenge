@@ -37,6 +37,7 @@ def get_flat_array(array):
 
 
 def find_number_in_array(output, item):
+    validate_type_element(item)
     is_array = item_is_array(item)
     if is_array:
         for items in item:
@@ -45,9 +46,12 @@ def find_number_in_array(output, item):
         output.append(item)
 
 
-def item_is_array(item):
+def validate_type_element(item):
     is_array = isinstance(item, list)
     is_int = isinstance(item, int)
     if not is_array and not is_int:
         raise TypeError("Item is not an array or an integer")
-    return is_array
+
+
+def item_is_array(item):
+    return isinstance(item, list)
