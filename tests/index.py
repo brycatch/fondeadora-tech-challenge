@@ -1,6 +1,6 @@
 import unittest
 from src.index import get_flat_array, item_is_array, validate_type_element
-from constants import BIG_INPUT, BIG_OUTPUT
+from .constants import BIG_INPUT, BIG_OUTPUT
 
 
 class TestIndex(unittest.TestCase):
